@@ -1,6 +1,6 @@
 # Transfer Learning for Astronomical Tidal Disruption Event Classification
 
-Classify tidal disruption events (TDEs) in a dataset also containing supernovae (SNe) and active galactic nuclei (AGN) using convolutional neural networks, with transfer learning from Gaussian Process-augmented synthetic light curves to the simulated Mallorn light curves.
+Classify tidal disruption events (TDEs) in a dataset also containing supernovae (SNe) and active galactic nuclei (AGN) using convolutional and gated recurrent neural networks, with transfer learning from Gaussian Process-augmented synthetic light curves to the simulated Mallorn light curves.
 
 Data is from the [MALLORN Astronomical Classification Challenge](https://www.kaggle.com/competitions/mallorn-astronomical-classification-challenge/leaderboard) on Kaggle, combined with additional synthetic light curves generated for pretraining (see [Data](#data) below).
 
@@ -14,7 +14,7 @@ AI4Science_Transfer_Learning/
 │   ├── finetune/                               # models finetuned on the original Mallorn light curves
 │   └── original/                               # models trained on the original light curves without transfer learning
 ├── notebooks/
-│   ├── lightning_cnn.ipynb                     # pretrain/finetune/test runs and result plots
+│   ├── training_models.ipynb                     # pretrain/finetune/test runs and result plots
 │   └── visualisation_generated_samples.ipynb   # visualisation of generated vs. original light curve properties
 ├── predictions/                                # test set predictions, one CSV per model
 ├── src/
@@ -66,7 +66,7 @@ Generate synthetic light curve samples for a given spectral type, used for pretr
 python -m AI4Science_Transfer_Learning <spectral_type> <number> <output_file_name> --data_dir data --active_bands ugirz
 ```
 
-Pretrain, finetune, and evaluate the CNN classifiers, and generate the result plots:
+Pretrain, finetune, and evaluate the CNN and GRU classifiers, and generate the result plots:
 
 ```bash
 notebooks/lightning_cnn.ipynb
